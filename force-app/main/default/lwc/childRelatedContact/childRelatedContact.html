@@ -1,0 +1,26 @@
+<template>
+    <lightning-card title="Related Child Contacts" icon-name="standard:contact">
+        <div class="slds-m-around_medium">
+            <template if:true={relatedConList.data}>
+                <template for:each={relatedConList.data} for:item="w">
+                    <div key={w.Id} class="slds-m-bottom_medium">
+                       <b> Account Id: </b> {w.AccountId}<br>
+                       <b> Account Name: </b> {w.Account.Name}<br>
+                       <b> Contact Name: </b> {w.Name}<br>
+                       <b> Street: </b>{w.MailingStreet} <br>
+                       <b> State: </b> {w.MailingState} <br>
+                       <b> Postal Code: </b> {w.MailingPostalCode} <br>
+                       <b> Country: </b>{w.MailingCountry} <br>
+                       <b> City: </b>{w.MailingCity}<br>
+                       
+                    </div>
+                </template>
+                <c-child-related-contact></c-child-related-contact>
+            </template>
+
+            <template if:true={relatedConList.error}>
+                <b>ERROR, Please check {childAccounts.error}</b>
+            </template>
+        </div>
+    </lightning-card>
+</template>

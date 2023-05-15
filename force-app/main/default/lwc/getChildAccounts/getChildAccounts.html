@@ -1,0 +1,24 @@
+<template>
+    <lightning-card title="Child Account" icon-name="standard:account">
+        <div class="slds-m-around_medium">
+            <template if:true={childAccounts.data}>
+                <template for:each={childAccounts.data} for:item="w">
+                    <div class="slds-m-bottom_small" key={w.Id}>
+                        <b>Name:</b> {w.Name} <br/>
+                        <b>Billing Street:</b> {w.BillingStreet} <br/>
+                        <b>Billing State:</b> {w.BillingState} <br/>
+                        <b>Billing Postal Code:</b> {w.BillingPostalCode} <br/>
+                        <b>Billing Country:</b> {w.BillingCountry} <br/>
+                        <b>Billing City: </b>{w.BillingCity}
+                        <c-child-related-contact
+                         record-id={w.Id}>
+                       </c-child-related-contact>
+                    </div>
+                </template>
+            </template>
+            <template if:true={childAccounts.error}>
+                <b>Error! Please check {childAccounts.error}</b>
+            </template>
+        </div>
+    </lightning-card>
+</template>
